@@ -5,6 +5,11 @@ import './registerServiceWorker'
 
 Vue.config.productionTip = false
 
+//Axios
+import axios from 'axios'
+
+Vue.prototype.$http = axios
+
 new Vue({
   router,
   render: h => h(App)
