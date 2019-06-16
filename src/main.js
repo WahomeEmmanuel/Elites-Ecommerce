@@ -10,6 +10,9 @@ import axios from 'axios'
 
 Vue.prototype.$http = axios
 
+//Import global styles
+require ('./styles/main.scss')
+
 new Vue({
   router,
   render: h => h(App)
