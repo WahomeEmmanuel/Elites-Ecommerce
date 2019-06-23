@@ -3,7 +3,7 @@
   <input type="checkbox" id="nav-check">
   <div class="nav-header">
     <div class="nav-title">
-      JoGeek
+      ELITES
     </div>
   </div>
   <div class="nav-btn">
@@ -16,7 +16,7 @@
   
   <div class="nav-links">
     <router-link to="/">Home</router-link>
-    <router-link to="/about">About</router-link>
+    <router-link to="/about">Products</router-link>
     <router-link to="/register">Register</router-link>
     <router-link to="/login">Login</router-link>
   </div>
@@ -33,7 +33,7 @@ export default {
 .nav {
   height: 50px;
   width: 100%;
-  background-color: #4d4d4d;
+  background-color: #34495E;
   position: relative;
 }
 
@@ -45,7 +45,9 @@ export default {
 .nav > .nav-header > .nav-title {
   display: inline-block;
   font-size: 22px;
-  color: #fff;
+  color: #B7950B;
+  font-weight: 600;
+  letter-spacing: 1px;
   padding: 10px 10px 10px 10px;
 }
 
@@ -56,12 +58,12 @@ export default {
 .nav > .nav-links {
   display: inline;
   float: right;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .nav > .nav-links > a {
-  display: inline-block;
-  padding: 13px 10px 13px 10px;
+  display: inline-block;  
+  padding: 13px 16px;
   text-decoration: none;
   color: #efefef;
 }
@@ -118,5 +120,7 @@ export default {
     height: calc(100vh - 50px);
     overflow-y: auto;
   }
+
+
 }
 </style>

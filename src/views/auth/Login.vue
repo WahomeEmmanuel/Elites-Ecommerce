@@ -1,18 +1,20 @@
 <template>
 <div class="header">
 
-<h1 >Login </h1>
+<h1 class="header__title">Login </h1>
 <div class="form-group">
-    <label for="exampleInputEmail1">Username</label>
-    <input type="text" class="form-control" id="exampleInputUsername1" name="username">
-    <div class="form-group">
-    <label for="exampleInputPassword1">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" name="password">
-    <div class="form-group">
-                 <button type="submit" class="btn btn-default">Login</button>
-                 </div>
-    </div>
+  <label for="InputUsername">Username</label>
+  <input type="text" class="form-control" id="InputUsername" name="username">
 </div>
+<div class="form-group">
+<label for="InputPassword">Password</label>
+<input type="password" class="form-control" id="InputPassword" name="password">
+</div>
+
+<p>Don't have an account? <router-link to="/register">Register</router-link></p>
+<button type="submit" class="submit-button">Login</button>
+
+
 </div>
 </template>
 
@@ -24,18 +26,18 @@
 
 .header {
   width: 30%;
-	margin: 80px auto 0px;
-	color: white;
-	background: rgb(101, 95, 160);
+	margin: 40px auto 0px;
 	text-align: center;
-	border: 1px solid #B0C4DE;
-	border-bottom: none;
-	border-radius: 10px 10px 0px 0px;
 	padding: 20px;
+}
+
+.header__title {
+  color: #34495E;
 }
 
 .form-group {
     margin: 10px 0px  10px 0px;
+    margin-top: 24px;
 }
 
 .form-group label {
@@ -48,16 +50,16 @@
 	width:93%;
   padding:5px 10px;
   font-size: 15px;
-  border-radius: 5px;
-  border:1px solid gray;
+  border:1px solid #D5DBDB;
+  margin: 4px 0;
 }
-.button{
-	padding:10px;
-	font-size: 15px;
-	color: white;
-	border:none;
-	border-radius: 5px;
-	background:#5F9EA0;
+.submit-button{
+	border: none;
+  padding: 12px 24px;
+  background-color: #B9770E;
+  color: #fff;
+  font-weight: 600;
+  font-size: 14px;
+  margin-top: 24px;
 }
-
 </style>

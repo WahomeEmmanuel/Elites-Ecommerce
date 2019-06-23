@@ -10,13 +10,13 @@
                 <img src="https://via.placeholder.com/150" alt="" class="image">
                 </div>
                 <div class="product__summary">
-                    <h2>Apple iPhone 5, GSM Unlocked, 16GB - White (Renewed)</h2>
-                    <p>by Amazon Renewed</p>
+                    <h2 class="name">Apple iPhone 5, GSM Unlocked, 16GB - White (Renewed)</h2>
+                    <p class="company">by Amazon Renewed</p>
                     <p><span>1 2 3 4 5</span></p>
                     <p>1276 Customer Reviews</p>
                     <br>
                     <br>
-                    <h3>Price: Ksh. 33,781</h3>
+                    <h3 class="price">Price: Ksh. 33,781</h3>
 
                     <button class="product__buy">Add to cart</button>
                 </div>
@@ -25,7 +25,7 @@
         </div>
         <div class="product-info">
             <div class="product__description">
-                <h4 class="title">Specifications</h4>
+                <h4 class="title">Features</h4>
                 <ul class="specifications__list">
                     <li class="specifications__list--item">Clip-on USB</li>
                     <li class="specifications__list--item">Securely attaches to keys, backpacks, handbags</li>
@@ -37,7 +37,50 @@
                 <p class="description__info">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Autem, explicabo veniam. Eos reiciendis, impedit, sequi earum beatae modi cum fuga, dolorem iste deleniti obcaecati doloremque eveniet corrupti a praesentium. Autem!Eveniet voluptate ipsum fugit quidem dolor, fuga dolorum, numquam debitis dolorem, atque dolore harum in tempora! Numquam consectetur eveniet suscipit at sapiente officia veritatis nobis. Est ad eum amet fugiat!</p>
             </div>
             <div class="product__review">
+                <div class="reviews">
+                    <h3 class="title">Reviews</h3>
+                    <ul class="reviews__list">
+                        <li class="reviews__list--item">
+                            <p class="name">Danman</p>
+                            <p>
+                                <span class="rating">3</span>
+                                <span class="review">Remote and sound not soo good.bt good for the price</span>
+                            </p>
+                        </li>
+                        <li class="reviews__list--item">
+                            <p class="name">Danman</p>
+                            <p>
+                                <span class="rating">3</span>
+                                <span class="review">Remote and sound not soo good.bt good for the price</span>
+                            </p>
+                        </li>
+                        <li class="reviews__list--item">
+                            <p class="name">Danman</p>
+                            <p>
+                                <span class="rating">3</span>
+                                <span class="review">Remote and sound not soo good.bt good for the price</span>
+                            </p>
+                        </li>
+                        <li class="reviews__list--item">
+                            <p class="name">Danman</p>
+                            <p>
+                                <span class="rating">3</span>
+                                <span class="review">Remote and sound not soo good.bt good for the price</span>
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="add_review">
+                     <h3 class="title">Add Review</h3>
+                     <form class="review_form">
+                         <input type="text" placeholder="Rating" class="form__input">
+                         <textarea name="" id="" cols="30" rows="10" placeholder="Write review" class="form__input">
 
+                         </textarea>
+                         <br>
+                         <input type="submit" value="Submit" class="form__submit">
+                     </form>
+                </div>
             </div>
         </div>
     </div>
@@ -95,11 +138,17 @@ export default {
         height: auto;
         padding: 12px;
 
+        .name {
+            color: #000;
+        }
+
         .product__buy {
             border: none;
             padding: 12px 24px;
-            background-color: darkgoldenrod;
+            background-color: #B9770E;
             color: #fff;
+            font-weight: 600;
+            font-size: 14px;
         }
     }
 }
@@ -108,7 +157,6 @@ export default {
     
     width: 100%;
     height: auto;
-    background-color: #F2F4F4;
 
     .product__description {
         width: 90%;
@@ -116,16 +164,81 @@ export default {
         height: auto;
         padding: 24px;
 
+        .title {
+            color: #000;
+        }
+
         .specifications__list {
             margin-left: -24px;
+            color: gray;
+        }
+
+        .description__info {
+            color: gray;
         }
     }
 
     .product__review {
         width: 90%;
         margin: 0 5%;
-        height: 80vh;
-        background-color: chocolate;
+        height: auto;
+        display: flex;
+        flex-flow: row nowrap;
+
+        .reviews {
+            width: 65%;
+            height: 100%;
+        }
+
+        .title {
+            padding-left: 16px;
+        }
+
+        .reviews__list {
+            margin-left: -24px;
+        }
+
+        .reviews__list--item {
+            list-style-type: none;
+            border-bottom: 1px solid rgb(207, 207, 207);
+
+            .name {
+                color: #000;
+                font-size: 14px;
+            }
+
+            .rating {
+                color: goldenrod;
+            }
+
+            .review  {
+                padding: 0 12px;
+                font-size: 14px;
+                color: gray;
+            }
+        }
+
+        .add_review {
+            width: 35%;
+            height: 100%;
+            padding: 24px;
+
+            .form__input {
+                margin: 6px;
+                padding: 6px;
+                width: 100%;
+            }
+
+            .form__submit {
+                margin: 6px;
+                padding: 12px 24px;
+                background-color: #B9770E;
+                color: #fff;
+                font-weight: 600;
+                font-size: 14px;
+                border: none;
+            }
+        }
     }
 }
 </style>

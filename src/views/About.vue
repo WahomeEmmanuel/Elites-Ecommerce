@@ -117,7 +117,7 @@ p {
     width: 20%;
     background-color: #F2F4F4;
     padding: 8px;
-    margin: 8px 20px;
+    margin: 8px 2.5%;
     float: left;
 
     .product__image {
