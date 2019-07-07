@@ -2,23 +2,23 @@
     <div class="product">
         <div class="product-brief">
             <div class="product__path">
-                <p class="path">Phones > Samsung S9</p>
+                <p class="path">Phones > {{product.subcategory_id.name}}</p>
                 <hr class="path__border">
             </div>
             <div class="row">
                 <div class="product__images">
-                <img src="https://via.placeholder.com/150" alt="" class="image">
+                <img :src="product.product_image[0].image" alt="" class="image">
                 </div>
                 <div class="product__summary">
-                    <h2 class="name">Apple iPhone 5, GSM Unlocked, 16GB - White (Renewed)</h2>
+                    <h2 class="name">{{product.name}}</h2>
                     <p class="company">by Amazon Renewed</p>
                     <p><span>1 2 3 4 5</span></p>
                     <p>1276 Customer Reviews</p>
                     <br>
                     <br>
-                    <h3 class="price">Price: Ksh. 33,781</h3>
+                    <h3 class="price">Price: Ksh. {{product.price}}</h3>
 
-                    <button class="product__buy">Add to cart</button>
+                    <button class="product__buy" @click="addToCart(product)">Add to cart</button>
                 </div>
             </div>
             
@@ -26,20 +26,30 @@
         <div class="product-info">
             <div class="product__description">
                 <h4 class="title">Features</h4>
-                <ul class="specifications__list">
-                    <li class="specifications__list--item">Clip-on USB</li>
-                    <li class="specifications__list--item">Securely attaches to keys, backpacks, handbags</li>
-                    <li class="specifications__list--item">Easy to plug</li>
-                    <li class="specifications__list--item">Play in installation</li>
-                    <li class="specifications__list--item">Ultra-compact</li>
+                <ul class="specifications__list" v-html="product.ingredients">
+
                 </ul>
                 <h4 class="title">Description</h4>
-                <p class="description__info">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Autem, explicabo veniam. Eos reiciendis, impedit, sequi earum beatae modi cum fuga, dolorem iste deleniti obcaecati doloremque eveniet corrupti a praesentium. Autem!Eveniet voluptate ipsum fugit quidem dolor, fuga dolorum, numquam debitis dolorem, atque dolore harum in tempora! Numquam consectetur eveniet suscipit at sapiente officia veritatis nobis. Est ad eum amet fugiat!</p>
+                <p class="description__info">{{product.description}}</p>
             </div>
             <div class="product__review">
                 <div class="reviews">
                     <h3 class="title">Reviews</h3>
                     <ul class="reviews__list">
+                        <li class="reviews__list--item">
+                            <p class="name">Danman</p>
+                            <p>
+                                <span class="rating">3</span>
+                                <span class="review">Remote and sound not soo good.bt good for the price</span>
+                            </p>
+                        </li>
+                        <li class="reviews__list--item">
+                            <p class="name">Danman</p>
+                            <p>
+                                <span class="rating">3</span>
+                                <span class="review">Remote and sound not soo good.bt good for the price</span>
+                            </p>
+                        </li>
                         <li class="reviews__list--item">
                             <p class="name">Danman</p>
                             <p>
@@ -88,7 +98,23 @@
 
 <script>
 export default {
+  name: 'product',
+  data () {
+    return {
+      product: {}
+    }
+  },
+  created() {
 
+    //get products
+    this.$http.get("shop/products/" + this.$route.params.id)
+    .then(json => this.product = json.data, error => console.log(error));
+  },
+  methods: {
+    addToCart(product) {
+      this.$store.dispatch('addToCart', product);
+    },
+  },
 }
 </script>
 
@@ -128,8 +154,8 @@ export default {
 
         .image {
             height: 50vh;
-            margin: 10vh 15%;
-            width: 70%;
+            margin: 10vh 25%;
+            width: 50%;
         }
     }
 

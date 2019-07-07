@@ -7,11 +7,13 @@
       </div>
     </div>
     <div class="products-wrapper">
-      <div class="product">
-        <img src="https://via.placeholder.com/150" alt="" class="product__image">
-        <p class="product__company">Company</p>
-        <h4 class="product__name">Product name & description</h4>
-        <p class="product__price">Ksh. 20,000</p>
+      <div class="product" v-for="product in products" :key='product.id'>
+        <router-link class="link-house" :to="'/product/' + product.id">
+        <img :src="product.product_image[0].image" alt="" class="product__image">
+        </router-link>
+        <p class="product__company">{{product.subcategory_id.name}}</p>
+        <h4 class="product__name">{{product.name}}</h4>
+        <p class="product__price">Ksh. {{product.price}}</p>
         <p class="product__rating"> 5 star</p>
       </div>
       <div class="product">
@@ -83,7 +85,17 @@
 
 <script>
 export default {
-  
+  name: 'products',
+  data () {
+    return {
+      products: []
+    }
+  },
+  created() {
+    //get products
+    this.$http.get("shop/products/")
+    .then(json => this.products = json.data, error => console.log(error));
+  }
 }
 </script>
 
@@ -121,8 +133,10 @@ p {
     float: left;
 
     .product__image {
-      width: 100%;
+      width: 80%;
       height: 30vh;
+      margin: 0 10%;
+      margin-bottom: 12px;
     }
 
     .product__name {

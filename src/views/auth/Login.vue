@@ -2,24 +2,63 @@
 <div class="header">
 
 <h1 class="header__title">Login </h1>
+
+<form @submit.prevent="submitLogin">
+
 <div class="form-group">
-  <label for="InputUsername">Username</label>
-  <input type="text" class="form-control" id="InputUsername" name="username">
+  <label for="InputEmail1">Username</label>
+  <input type="text" class="form-control" id="InputEmail1" v-model="login.username">
 </div>
+
 <div class="form-group">
 <label for="InputPassword">Password</label>
-<input type="password" class="form-control" id="InputPassword" name="password">
+<input type="password" class="form-control" id="InputPassword" name="password" v-model="login.password">
 </div>
 
 <p>Don't have an account? <router-link to="/register">Register</router-link></p>
 <button type="submit" class="submit-button">Login</button>
-
+</form>
 
 </div>
 </template>
 
 <script>
-
+export default {
+     name: 'login',
+     data() {
+         return {
+             login: {}
+         }
+     },
+    methods: {
+        submitLogin: function() {
+            this.$http.post('auth/login/',this.login)
+            .then(response => {
+              if (response.data.id)
+              {
+                console.log(response.data)
+                this.$session.start()
+                this.$session.set('user', response.data.id)
+                // Vue.http.headers.common['Authorization'] = 'Bearer ' + response.data.token
+                location.reload();
+                this.$router.push('/')
+              }
+              else {
+                this.showAlert()
+              }         
+                
+            })
+            .catch(error => {});
+        },
+        showAlert: function() {
+            this.$swal({
+            type: 'error',
+            text: "Invalid username or password",
+            showConfirmButton: true
+            });
+        }
+    }
+}
 </script>
 
 <style lang="scss" scoped>

@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <Nav />
+    <transition name="fade">
     <router-view/> 
+    </transition>
     <Footer />    
   </div>
 </template>
@@ -16,6 +18,13 @@
 
 .router-link-exact-active {
   color: #B7950B !important;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .3s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
 }
 
 div {

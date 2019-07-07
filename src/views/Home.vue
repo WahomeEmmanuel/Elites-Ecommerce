@@ -4,29 +4,28 @@
       <div class="categories" >
         <h4 class="title">Categories</h4>
         <ul class="category__list">
-          <li class="category__list--item">Phones</li>
-          <li class="category__list--item">Tablets</li>
-          <li class="category__list--item">Laptop</li>
-          <li class="category__list--item">Computers</li>
-          <li class="category__list--item">Cameras</li>
+          <li class="category__list--item" v-for="category in categories" :key='category.id'>{{category.name}}</li>
         </ul>
       </div>
       <!-- <img src="https://images.pexels.com/photos/449559/pexels-photo-449559.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="" class="image"> -->
       <div class="image">
         <img src="https://cdn.pixabay.com/photo/2015/08/25/11/50/stairs-906723_960_720.jpg" alt="" class="img">
         <div class="centered">
-          <h2>Shopping made easy around the world.</h2>
+          <h2 class="centered-text">Shopping made easy around the world.</h2>
         </div>
       </div>
       
     </div>
+
     <div class="recent-products">
       <h2 class="recent-title">Recently added products</h2>
       <div class="recent-row">
-        <div class="recent-product">
-          <img src="https://via.placeholder.com/150" alt="" class="product__image">
-          <p class="product__name">Nokia 3.2</p>
-          <p class="product__price">Ksh. 13,000</p>
+        <div class="recent-product" v-for="product in products" :key='product.id'>
+          <router-link class="link-house" :to="'/product/' + product.id">
+          <img :src="product.product_image[0].image" alt="" class="product__image">
+          </router-link>
+          <p class="product__name">{{product.name}}</p>
+          <p class="product__price">Ksh. {{product.price}}</p>
         </div>
         <div class="recent-product">
           <img src="https://via.placeholder.com/150" alt="" class="product__image">
@@ -81,8 +80,20 @@
 <script>
 export default {
   name: 'home',
-  components: {
-   
+  data () {
+    return {
+      categories: [],
+      products: []
+    }
+  },
+  created() {
+    //get categories
+    this.$http.get("shop/categories/")
+    .then(json => this.categories = json.data, error => console.log(error));
+
+    //get products
+    this.$http.get("shop/products/")
+    .then(json => this.products = json.data, error => console.log(error));
   }
 }
 </script>
@@ -128,11 +139,17 @@ export default {
   /* Centered text */
   .centered {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top: 0%;
+    left: 0%;
     font-size: 32px;        
     color: goldenrod;
+    background-color: rgba(0, 0, 0 , 0.3);
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
   }
 }
 
@@ -166,7 +183,7 @@ export default {
 
       .product__image {
         height: 30vh;
-        width: 100%;
+        width: 80%;
       }
 
       .product__name {
