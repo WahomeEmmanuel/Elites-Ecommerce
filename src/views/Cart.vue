@@ -1,5 +1,4 @@
 <template>
-  <!-- <button class="btn btn-primary">Cart ({{ Cart.length }})</button> -->
   <div class="cart">
     <span v-if="numCart !== 0">
     <p class="bold">Cart ({{ numCart }} items)</p>
@@ -13,18 +12,20 @@
         </tr>
         <tr class="table-row" v-for="item in Cart" :key="item.name">
             <td class="table-container description">
+                <router-link class="product-link" :to="'/product/' + item.id">
                 <h4 class="product-name">{{ item.name }}</h4>
-                <span class="remove">Remove</span>
+                </router-link>
+                <button @click="removeFromCart(item)" class="remove">Remove <font-awesome-icon class="icon" icon="trash" /></button>
                 </td>
-            <td class="table-container">1</td>
+            <td class="table-container">{{item.quantity}}</td>
             <td class="table-container">{{ item.price | toCurrency}}</td>
-            <td class="table-container sub-total">{{ item.price | toCurrency}}</td>
+            <td class="table-container sub-total">{{ item.subTotal | toCurrency}}</td>
         </tr>
          <tr class="table-footer-row">
             <th class="table-footer-container"></th>
             <th class="table-footer-container"></th>
             <th class="table-footer-container total">Total</th>
-            <th class="table-footer-container amount">KSH 23,000</th>
+            <th class="table-footer-container amount">{{total | toCurrency}}</th>
         </tr>
     </tbody>
     </table>
@@ -47,6 +48,14 @@ export default {
   computed: {
     Cart() { return this.$store.getters.Cart; },
     numCart() { return this.Cart.length; },
+    total() {
+      return this.Cart.reduce((acc, cur) => acc + cur.price, 0);
+    },
+  },
+  methods: {
+    removeFromCart(index) {
+      this.$store.dispatch('removeFromCart', index);
+    },
   },
 };
 </script>
@@ -102,6 +111,10 @@ export default {
     color: #A6ACAF;
 }
 
+.product-link {
+    text-decoration: none;
+}
+
 .product-name {
     color: #34495E;
     font-weight: 600;
@@ -114,6 +127,8 @@ export default {
 }
 
 .remove {
+    border: none;
+    background-color: transparent;
     color: #B7950B;
 }
 

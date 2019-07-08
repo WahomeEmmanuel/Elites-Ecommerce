@@ -20,10 +20,10 @@
     <div class="dropdown">
       <button class="dropbtn">Account</button>
       <div class="dropdown-content">
-        <router-link v-if="!user" to="/login">Login</router-link>
-        <router-link v-if="user" to="/">Welcome {{ user.first_name }}</router-link>
-        <router-link v-if="!user" to="/register">Register</router-link>
-        <a href="#" v-if="user">Logout</a>
+        <router-link to="/login">Login</router-link>
+        <router-link to="/">Welcome {{ user.first_name }}</router-link>
+        <router-link to="/register">Register</router-link>
+        <a href="#">Logout</a>
       </div>
     </div>
     <router-link to="/cart"><font-awesome-icon class="icon" icon="shopping-cart" />Cart ({{ Cart.length }})</router-link> 

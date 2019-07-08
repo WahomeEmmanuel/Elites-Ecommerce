@@ -43,8 +43,10 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
+
 // Vuex store
 import store from './store';
+
 
 // Currency formatter
 Vue.filter('toCurrency', function (value) {
@@ -61,14 +63,12 @@ Vue.filter('toCurrency', function (value) {
 
 //Icons
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faUserSecret, faShoppingCart } from '@fortawesome/free-solid-svg-icons'
+import { faUserSecret, faShoppingCart, faTrash} from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-library.add(faUserSecret, faShoppingCart)
+library.add(faUserSecret, faShoppingCart, faTrash)
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
-
-
 
 //Import global styles
 require ('./styles/main.scss')

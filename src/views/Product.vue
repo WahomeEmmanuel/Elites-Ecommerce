@@ -12,8 +12,7 @@
                 <div class="product__summary">
                     <h2 class="name">{{product.name}}</h2>
                     <p class="company">by Amazon Renewed</p>
-                    <p><span>1 2 3 4 5</span></p>
-                    <p>1276 Customer Reviews</p>
+                    <p class="reviews-count">{{product.reviews_count}} Customer Reviews</p>
                     <br>
                     <br>
                     <h3 class="price">Price: Ksh. {{product.price}}</h3>
@@ -36,55 +35,20 @@
                 <div class="reviews">
                     <h3 class="title">Reviews</h3>
                     <ul class="reviews__list">
-                        <li class="reviews__list--item">
-                            <p class="name">Danman</p>
+                        <li class="reviews__list--item" v-for="review in product.product_review" :key='review.id'>
+                            <p class="name">{{review.posted_by_meta.first_name}}</p>
                             <p>
-                                <span class="rating">3</span>
-                                <span class="review">Remote and sound not soo good.bt good for the price</span>
-                            </p>
-                        </li>
-                        <li class="reviews__list--item">
-                            <p class="name">Danman</p>
-                            <p>
-                                <span class="rating">3</span>
-                                <span class="review">Remote and sound not soo good.bt good for the price</span>
-                            </p>
-                        </li>
-                        <li class="reviews__list--item">
-                            <p class="name">Danman</p>
-                            <p>
-                                <span class="rating">3</span>
-                                <span class="review">Remote and sound not soo good.bt good for the price</span>
-                            </p>
-                        </li>
-                        <li class="reviews__list--item">
-                            <p class="name">Danman</p>
-                            <p>
-                                <span class="rating">3</span>
-                                <span class="review">Remote and sound not soo good.bt good for the price</span>
-                            </p>
-                        </li>
-                        <li class="reviews__list--item">
-                            <p class="name">Danman</p>
-                            <p>
-                                <span class="rating">3</span>
-                                <span class="review">Remote and sound not soo good.bt good for the price</span>
-                            </p>
-                        </li>
-                        <li class="reviews__list--item">
-                            <p class="name">Danman</p>
-                            <p>
-                                <span class="rating">3</span>
-                                <span class="review">Remote and sound not soo good.bt good for the price</span>
+                                <span class="rating">{{review.rating}}</span>
+                                <span class="review">{{review.review}}</span>
                             </p>
                         </li>
                     </ul>
                 </div>
                 <div class="add_review">
                      <h3 class="title">Add Review</h3>
-                     <form class="review_form">
-                         <input type="text" placeholder="Rating" class="form__input">
-                         <textarea name="" id="" cols="30" rows="10" placeholder="Write review" class="form__input">
+                     <form @submit.prevent="submitReview" class="review_form">
+                         <input type="text" placeholder="Rating" class="form__input" v-model="review.rating">
+                         <textarea cols="30" rows="10" placeholder="Write review" class="form__input" v-model="review.review">
 
                          </textarea>
                          <br>
@@ -101,7 +65,9 @@ export default {
   name: 'product',
   data () {
     return {
-      product: {}
+      product: {},
+      reviews: [],
+      review: {}
     }
   },
   created() {
@@ -109,11 +75,40 @@ export default {
     //get products
     this.$http.get("shop/products/" + this.$route.params.id)
     .then(json => this.product = json.data, error => console.log(error));
+
   },
   methods: {
     addToCart(product) {
-      this.$store.dispatch('addToCart', product);
+        this.product.quantity = 1;
+        this.product.subTotal = product.price;
+        this.$store.dispatch('addToCart', product);
     },
+    submitReview: function() {
+        if(this.$session.get('user')) {
+            this.review.product_id = this.$route.params.id
+            this.review.posted_by = this.$session.get('user')
+            this.$http.post('shop/reviews/',this.review)
+            .then(response => {  
+                //refresh reviews
+                this.$http.get("shop/products/" + this.$route.params.id)
+                .then(json => this.product = json.data, error => console.log(error));
+
+                this.showAlert('success','Successfully posted review')      
+                
+            })
+            .catch(error => {});            
+        }
+        else {
+            this.showAlert('error','Please login to post a review')
+        }
+    },
+    showAlert: function($type,$message) {
+        this.$swal({
+        type: $type,
+        text: $message,
+        showConfirmButton: true
+        });
+    }
   },
 }
 </script>
@@ -138,6 +133,10 @@ export default {
     .path__border {
         color: gray;
     }
+}
+
+.reviews-count {
+    color: #B9770E;
 }
 
 .row {
