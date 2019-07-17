@@ -38,5 +38,30 @@ export default new Router({
       name: 'cart',
       component: () => import('./views/Cart.vue')
     },
+    {
+      path: '/checkout',
+      name: 'checkout',
+      component: () => import('./views/Checkout.vue')
+    },
+    {
+      path: '/payment',
+      name: 'payment',
+      component: () => import('./views/Payment.vue')
+    },
+    {
+      path: '/confirm',
+      name: 'confirm',
+      component: () => import('./views/Confirm.vue')
+    },
+    {
+      path: '/orders',
+      name: 'orders',
+      component: () => import('./views/Orders.vue')
+    },
+    {
+      path: '/reserve',
+      name: 'reserves',
+      component: () => import('./views/Reserves.vue')
+    },
   ]
 })

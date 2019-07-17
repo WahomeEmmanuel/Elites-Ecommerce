@@ -19,6 +19,7 @@
     "register-service-worker": "^1.6.2",
     "vue": "^2.6.10",
     "vue-axios": "^2.1.4",
+    "vue-paypal-checkout": "^3.2.0",
     "vue-router": "^3.0.3",
     "vue-session": "^1.0.0",
     "vue-sweetalert2": "^2.0.5",

@@ -32,46 +32,7 @@
           <p class="product__name">Nokia 3.2</p>
           <p class="product__price">Ksh. 13,000</p>
         </div>
-        <div class="recent-product">
-          <img src="https://via.placeholder.com/150" alt="" class="product__image">
-          <p class="product__name">Nokia 3.2</p>
-          <p class="product__price">Ksh. 13,000</p>
-        </div>
-        <div class="recent-product">
-          <img src="https://via.placeholder.com/150" alt="" class="product__image">
-          <p class="product__name">Nokia 3.2</p>
-          <p class="product__price">Ksh. 13,000</p>
-        </div>
-        <div class="recent-product">
-          <img src="https://via.placeholder.com/150" alt="" class="product__image">
-          <p class="product__name">Nokia 3.2</p>
-          <p class="product__price">Ksh. 13,000</p>
-        </div>
-        <div class="recent-product">
-          <img src="https://via.placeholder.com/150" alt="" class="product__image">
-          <p class="product__name">Nokia 3.2</p>
-          <p class="product__price">Ksh. 13,000</p>
-        </div>
-        <div class="recent-product">
-          <img src="https://via.placeholder.com/150" alt="" class="product__image">
-          <p class="product__name">Nokia 3.2</p>
-          <p class="product__price">Ksh. 13,000</p>
-        </div>
-        <div class="recent-product">
-          <img src="https://via.placeholder.com/150" alt="" class="product__image">
-          <p class="product__name">Nokia 3.2</p>
-          <p class="product__price">Ksh. 13,000</p>
-        </div>
-        <div class="recent-product">
-          <img src="https://via.placeholder.com/150" alt="" class="product__image">
-          <p class="product__name">Nokia 3.2</p>
-          <p class="product__price">Ksh. 13,000</p>
-        </div>
-        <div class="recent-product">
-          <img src="https://via.placeholder.com/150" alt="" class="product__image">
-          <p class="product__name">Nokia 3.2</p>
-          <p class="product__price">Ksh. 13,000</p>
-        </div>
+
       </div>
     </div>
   </div>

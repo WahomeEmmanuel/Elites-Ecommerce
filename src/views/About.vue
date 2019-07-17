@@ -16,69 +16,6 @@
         <p class="product__price">Ksh. {{product.price}}</p>
         <p class="product__rating"> 5 star</p>
       </div>
-      <div class="product">
-        <img src="https://via.placeholder.com/150" alt="" class="product__image">
-        <p class="product__company">Company</p>
-        <h4 class="product__name">Product name & description</h4>
-        <p class="product__price">Ksh. 20,000</p>
-        <p class="product__rating"> 5 star</p>
-      </div>
-      <div class="product">
-        <img src="https://via.placeholder.com/150" alt="" class="product__image">
-        <p class="product__company">Company</p>
-        <h4 class="product__name">Product name & description</h4>
-        <p class="product__price">Ksh. 20,000</p>
-        <p class="product__rating"> 5 star</p>
-      </div>
-      <div class="product">
-        <img src="https://via.placeholder.com/150" alt="" class="product__image">
-        <p class="product__company">Company</p>
-        <h4 class="product__name">Product name & description</h4>
-        <p class="product__price">Ksh. 20,000</p>
-        <p class="product__rating"> 5 star</p>
-      </div>
-      <div class="product">
-        <img src="https://via.placeholder.com/150" alt="" class="product__image">
-        <p class="product__company">Company</p>
-        <h4 class="product__name">Product name & description</h4>
-        <p class="product__price">Ksh. 20,000</p>
-        <p class="product__rating"> 5 star</p>
-      </div>
-      <div class="product">
-        <img src="https://via.placeholder.com/150" alt="" class="product__image">
-        <p class="product__company">Company</p>
-        <h4 class="product__name">Product name & description</h4>
-        <p class="product__price">Ksh. 20,000</p>
-        <p class="product__rating"> 5 star</p>
-      </div>
-      <div class="product">
-        <img src="https://via.placeholder.com/150" alt="" class="product__image">
-        <p class="product__company">Company</p>
-        <h4 class="product__name">Product name & description</h4>
-        <p class="product__price">Ksh. 20,000</p>
-        <p class="product__rating"> 5 star</p>
-      </div>
-      <div class="product">
-        <img src="https://via.placeholder.com/150" alt="" class="product__image">
-        <p class="product__company">Company</p>
-        <h4 class="product__name">Product name & description</h4>
-        <p class="product__price">Ksh. 20,000</p>
-        <p class="product__rating"> 5 star</p>
-      </div>
-      <div class="product">
-        <img src="https://via.placeholder.com/150" alt="" class="product__image">
-        <p class="product__company">Company</p>
-        <h4 class="product__name">Product name & description</h4>
-        <p class="product__price">Ksh. 20,000</p>
-        <p class="product__rating"> 5 star</p>
-      </div>
-      <div class="product">
-        <img src="https://via.placeholder.com/150" alt="" class="product__image">
-        <p class="product__company">Company</p>
-        <h4 class="product__name">Product name & description</h4>
-        <p class="product__price">Ksh. 20,000</p>
-        <p class="product__rating"> 5 star</p>
-      </div>
     </div>
   </div>
 </template>
